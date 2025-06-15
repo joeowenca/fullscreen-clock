@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Nabla } from "next/font/google";
+import { Xanh_Mono } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,8 +13,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const nabla = Nabla({
-  variable: "--font-nabla",
+const xanh = Xanh_Mono({
+  weight: "400",
+  style: "italic",
+  variable: "--font-xanh",
   subsets: ["latin"],
 });
 
@@ -31,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${nabla.className} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${xanh.className} antialiased`}
       >
         {children}
       </body>
