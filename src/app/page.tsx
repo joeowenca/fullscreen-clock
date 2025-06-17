@@ -6,10 +6,6 @@ export default function Clock() {
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
-    document.title = "Fullscreen Clock";
-  }, []);
-
-  useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
