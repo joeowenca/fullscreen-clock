@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Xanh_Mono } from "next/font/google";
 import { Sixtyfour } from "next/font/google";
 import "./globals.css";
 
@@ -11,13 +10,6 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const xanh = Xanh_Mono({
-  weight: "400",
-  style: "italic",
-  variable: "--font-xanh",
   subsets: ["latin"],
 });
 
