@@ -14,7 +14,7 @@ export default function Clock() {
   }, []);
 
   return (
-    <div className="xanh w-screen h-screen flex justify-center items-center">
+    <div className="w-screen h-screen flex justify-center items-center">
       <h1 className="2xl:text-[180pt] xl:text-[140pt] lg:text-[100pt] md:text-[80pt] sm:text-[60pt] text-[40pt] text-shadow-[0_0px_30px_rgb(211_84_0_/_1)]">
         {currentTime.toLocaleTimeString()}
       </h1>

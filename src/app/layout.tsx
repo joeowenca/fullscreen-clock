@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Xanh_Mono } from "next/font/google";
+import { Sixtyfour } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -20,6 +21,13 @@ const xanh = Xanh_Mono({
   subsets: ["latin"],
 });
 
+const sixtyfour = Sixtyfour({
+  weight: "400",
+  style: "normal",
+  variable: "--font-bytesized",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "Fullscreen Clock",
   description: "A Fullscreen Clock",
@@ -35,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${xanh.className} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${sixtyfour.className} antialiased`}
       >
         {children}
       </body>
