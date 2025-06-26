@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-let cachedWeather: any = null;
+let cachedWeather: { current: { temp_c: number } } | null = null;
 let lastFetched = 0;
 const ONE_HOUR = 1000 * 60 * 60;
 
@@ -15,9 +15,10 @@ export async function GET() {
       cachedWeather = data;
       lastFetched = now;
     } catch (err) {
+      console.error('Weather fetch failed:', err);
       return NextResponse.json({ error: 'Failed to fetch weather' }, { status: 500 });
     }
   }
 
-  return NextResponse.json({ temperature: cachedWeather.current.temp_c });
+  return NextResponse.json({ temperature: cachedWeather!.current.temp_c });
 }
