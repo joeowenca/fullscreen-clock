@@ -9,6 +9,8 @@ export default function Clock() {
 
   const hands: string[] = ["\\", "|", "/", "-"];
 
+  const ONE_HOUR = 1000 * 60 * 60;
+
   async function fetchWeather() {
     try {
       const res = await fetch("/api/weather");
@@ -27,7 +29,6 @@ export default function Clock() {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentTime(new Date());
-      fetchWeather();
     }, 1000);
 
     return () => clearInterval(intervalId);
@@ -35,10 +36,18 @@ export default function Clock() {
 
   useEffect(() => {
     const intervalId2 = setInterval(() => {
+      fetchWeather();
+    }, ONE_HOUR);
+
+    return () => clearInterval(intervalId2);
+  }, []);
+
+  useEffect(() => {
+    const intervalId3 = setInterval(() => {
       setHand((prev) => prev + 1);
     }, 200);
 
-    return () => clearInterval(intervalId2);
+    return () => clearInterval(intervalId3);
   }, []);
 
   const clockOptions: Intl.DateTimeFormatOptions = {
