@@ -13,10 +13,9 @@ export default function Clock() {
       setTemp(data.temperature);
     }
 
-    getWeather();
-
     const intervalId = setInterval(() => {
       setCurrentTime(new Date());
+      getWeather();
     }, 1000);
 
     return () => clearInterval(intervalId);
