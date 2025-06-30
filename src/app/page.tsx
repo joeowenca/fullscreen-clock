@@ -69,7 +69,7 @@ export default function Clock() {
         <p className="float-left">
           {temp !== null ? ` ${temp}°C` : "Loading..."}
         </p>
-        <p className="float-right">{"-"}</p>
+        <p className="float-right">{hands[hand % 4]}</p>
       </div>
     </div>
   );
