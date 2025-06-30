@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-let cachedWeather: { current: { temp_c: number } } | null = null;
+let cachedWeather: { current: { feelslike_c: number } } | null = null;
 
 export async function GET() {
 
@@ -16,5 +16,5 @@ export async function GET() {
     }
   }
 
-  return NextResponse.json({ temperature: cachedWeather!.current.temp_c });
+  return NextResponse.json({ temperature: cachedWeather!.current.feelslike_c });
 }
