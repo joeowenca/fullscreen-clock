@@ -15,7 +15,10 @@ export default function Clock() {
     try {
       const res = await fetch("/api/weather");
       const data = await res.json();
-      setTemp(data.temperature);
+      const rawTemp = data.temperature;
+      const bias = Math.min(Math.max(2.5 - 0.1 * rawTemp, -0.5), 2.5);
+      const correctedTemp = Math.ceil((rawTemp - bias + Number.EPSILON) * 10) / 10;
+      setTemp(correctedTemp);
     } catch (err) {
       console.error("Failed to fetch weather:", err);
     }
