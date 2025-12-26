@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server';
 
-let cachedWeather: { current: { feelslike_c: number } } | null = null;
+let cachedWeather: { heatindex: Number } | null = null;
 
 export async function GET() {
 
   if (!cachedWeather) {
     try {
-      const res = await fetch(`https://api.weatherapi.com/v1/current.json?key=${process.env.WEATHER_API_KEY}&q=Victoria,BC`);
+      const res = await fetch(`https://api.airgradient.com/public/api/v1/world/locations/170575/measures/current`);
       if (!res.ok) throw new Error('Failed to fetch weather');
       const data = await res.json();
       cachedWeather = data;
@@ -16,5 +16,5 @@ export async function GET() {
     }
   }
 
-  return NextResponse.json({ temperature: cachedWeather!.current.feelslike_c });
+  return NextResponse.json({ temperature: cachedWeather!.heatindex});
 }
